@@ -10,8 +10,8 @@ db = SQLAlchemy(app)
 
 # Definindo o modelo Task
 class Tasks(db.Model):
-    id = db.Column(db.Integer, primary_key=True)  # Corrigido de 'Colum' para 'Column' e 'primiry_key' para 'primary_key'
-    description = db.Column(db.String(100), unique=True, nullable=False)  # Corrigido de 'Colum' para 'Column'
+    id = db.Column(db.Integer, primary_key=True)  
+    description = db.Column(db.String(100), unique=True, nullable=False)  
     completed = db.Column(db.Boolean, default=False) 
 
 #crud read
