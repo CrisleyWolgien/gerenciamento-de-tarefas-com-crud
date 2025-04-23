@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Formulário para criar uma nova tarefa -->
+        <form class="task-form" action="/create" method="POST">
+            <input type="text" name="description" placeholder="Criar uma nova tarefa..." required>
+            <button type="submit">+</button>
+        </form>
+
+        <!-- Lista de tarefas -->
+        <ul class="task-list">
+            {% for task in tasks %}
+            <li class="task-item">
+                <form action="/completed/{{ task.id }}" method="post" class="checkbox-form">
+                    <label class="checkbox-container">
+                      <input type="checkbox" name="completed" onchange="this.form.submit()" {% if task.completed %}checked{% endif %}>
+                      <span class="checkmark"></span>
+                    </label>
+                  </form> 
+                <!-- Formulário para atualizar a tarefa -->
+                <form class="update-form" action="/update/{{ task.id }}" method="post">
+                    <input type="text" name="description" value="{{ task.description }}">
+                    <button type="submit">✓</button>
+                </form>
+        
+                             
+        
+                <!-- Formulário para excluir a tarefa -->
+                <form class="delete-form" action="/delete/{{ task.id }}" method="post">
+                    <button type="submit">🗑</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+/* Body e estrutura geral */
+body {
+    background: #0f0f1b;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 50px;
+}
+
+/* Container principal */
+.container {
+    width: 100%;
+    max-width: 600px;  /* Aumentado o max-width para melhorar o layout */
+    padding: 20px;
+    background: #181825;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Sombras mais suaves */
+}
+
+/* Formulário para criar tarefas */
+.task-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.task-form input[type="text"] {
+    flex-grow: 1;
+    padding: 12px;
+    background: #262639;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 1rem;
+}
+
+.task-form button {
+    padding: 0 20px;
+    font-size: 1.2rem;
+    background: #00ffc3;
+    border: none;
+    border-radius: 6px;
+    color: black;
+    cursor: pointer;
+}
+
+.task-form button:hover {
+    background: #00e0a0;  /* Cor de hover mais suave */
+}
+
+/* Estilo para a lista de tarefas */
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    background: #1e1e30;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.task-item:hover {
+    background: #282841;
+}
+
+/* Formulário para atualizar tarefas */
+.update-form {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+
+.update-form input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2f2f44;
+    color: white;
+}
+
+.update-form button {
+    background-color: #00ffc3;
+    border: none;
+    color: black;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.update-form button:hover {
+    background-color: #00e0a0;
+}
+
+/* Botão de exclusão */
+.delete-form button {
+    background-color: #ff5c5c;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.delete-form button:hover {
+    background-color: #ff4040; /* Cor de hover mais suave para exclusão */
+}
+
+input[type="checkbox"] {
+    display: none; /* Esconde o checkbox real */
+}
+
+.task-item .checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.checkbox-container .checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00ffc3;
+    border-radius: 5px;
+    position: relative;
+    background-color: transparent;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.checkbox-container .checkbox.checked {
+    background-color: #00ffc3;
+    border-color: #00e0a0;
+}
+
+.checkbox-container .checkbox.checked::after {
+    content: '✔'; /* Marca a tarefa como concluída */
+    position: absolute;
+    top: -2px;
+    left: 3px;
+    color: white;
+    font-size: 16px;
+}
+
+.checkbox-container .checkbox:hover {
+    border-color: #00e0a0;
+}
+
+.checkbox-container .checkbox:focus {
+    outline: none;
+}
+
+.checkbox-container span {
+    color: #00ffc3;
+    font-size: 14px;
+}
+
+.checkbox-container span.completed {
+    color: #808080; /* Cor mais suave para tarefas concluídas */
+}
+/* Container do checkbox customizado */
+.checkbox-container {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  
+  /* Checkbox real escondido */
+  .checkbox-container input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+  
+  /* Caixa personalizada */
+  .checkbox-container .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background-color: #262639;
+    border: 2px solid #00ffc3;
+    border-radius: 4px;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  
+  /* Ícone de check, escondido por padrão */
+  .checkbox-container .checkmark::after {
+    content: "✔";
+    position: absolute;
+    display: none;
+    top: 1px;
+    left: 4px;
+    font-size: 18px;
+    color: #00ffc3;
+  }
+  
+  /* Quando o checkbox real está marcado */
+  .checkbox-container input:checked + .checkmark {
+    background-color: #00ffc3;
+    border-color: #00e0a0;
+  }
+  
+  /* Mostrar o ✔ */
+  .checkbox-container input:checked + .checkmark::after {
+    display: block;
+  }
+  
+  /* Rótulo da tarefa */
+  .task-label {
+    vertical-align: middle;
+    font-size: 1rem;
+    color: #fff;
+    transition: color 0.2s, text-decoration 0.2s;
+  }
+  
+  /* Estilo para tarefa concluída */
+  .checkbox-container input:checked ~ .task-label {
+    color: #808080;
+    text-decoration: line-through;
+  }
+
